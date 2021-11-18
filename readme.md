@@ -26,7 +26,7 @@ In designing and building your project, you will start by forking and cloneing t
 
 
 5. API you plan to use
-     * Not totally sure...might need help with this. Was thinking some sort of blog/social media API?
+     * randomquote-api
 
 6. ERD
      
