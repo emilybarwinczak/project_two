@@ -1,0 +1,16 @@
+<h1>SEARCH RESULTS</h1>
+
+ <%if(!posts) {%>
+    <h3>No Results Found</h3>
+    <small>check your spelling and punctuation and try again</small>
+    <%} else {%>
+        <ul>
+            <%posts.forEach(function(post) {%>
+                <li>
+                    <a href="/post/<%=post.id%>">
+                        <%=post.title%>
+                    </a>
+                </li>
+                <%})%>
+        </ul>
+        <%}%> 
