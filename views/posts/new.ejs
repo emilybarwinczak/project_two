@@ -1,0 +1,33 @@
+<!-- create post
+text box for review 
+add image, URL link box -->
+
+
+
+<section id='add' class='container'>
+    <div class='form-wrap'>
+        <div class="container">
+            <h2>Create Post</h2>
+        </div>
+    </div>
+    <form action="/post/new" method="POST">
+        <div class="container">
+            <label for="city">City</label>
+            <input type="text" name="city" id="city" class="form-box" values={{city}} required>
+        </div>
+
+        <div class="container">
+            <label for="country">Country</label>
+            <input type="text" name="country" id="country" class="form-box" values={{country}} required>
+        </div>
+
+        <div class="container">
+            <label for="content">Review</label>
+            <input type="text" name="content" id="content" class="form-box" values={{content}} required>
+        </div>
+
+        <div class="container">
+            <label for="photo">Image URL:</label>
+            <input type="text" name="photo" id="photo" class="form-box" values={{photo}} required>
+        </div>
+    </form>
