@@ -1,9 +1,13 @@
-let express = require("express")
-const db = require("../models")
-// const router = require("./auth")
+let express = require('express')
+let db = require('../models')
 const router = express.Router()
-const post = require("../models/post")
-const sequelize = require("sequelize")
+const post = require('../models/post')
+const sequelize = require('sequelize')
+const { Op } = require('sequelize')
+const methodOverride = require('method-override')
+const cloudinary = require('cloudinary')
+const multer = require('multer')
+const upload = multer({ dest: './uploads/' })
 
 
 // SEARCH
@@ -22,10 +26,10 @@ router.get('/search', (req, res) => {
   })
 
 // Form to Create Post
-router.get("/new", (req, res)=>{
+router.get("/new", (req, res) => {
     db.post.findAll()
     .then((post) => {
-        res.render("posts/new", {post: post})
+        res.render("posts/new", { post: post })
     })
     .catch((error) => {
         res.status(200).send("new posts")
@@ -38,12 +42,23 @@ router.post("/new", (req, res) => {
         city: req.body.city,
         country: req.body.country,
         content: req.body.content,
-        photo: req.body.photo
+        title: req.body.title
     })
     .then((post) => {
-        res.render("posts/new", {post: post})
+        res.render("posts/image", {post: post})
     })
     .catch((error) => {
         console.log(error)
     })
 })
+
+// Profile -- ALL POSTS
+router.get("/", (req, res)=>{
+  db.post.findAll()
+  .then((posts)=>{
+    res.render("posts/index", { posts })
+  })
+  .catch(err => console.log(err))
+})
+
+module.exports = router

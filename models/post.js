@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     city: DataTypes.STRING,
     country: DataTypes.STRING,
     content: DataTypes.STRING,
-    photo: DataTypes.STRING
+    title: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'post',
