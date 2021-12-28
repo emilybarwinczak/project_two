@@ -2,16 +2,22 @@
   "development": {
     "database": "project_two_development",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "username": null,
+    "password": null
   },
   "test": {
     "database": "project_two_test",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "username": null,
+    "password": null
   },
   "production": {
     "database": "project_two_production",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "username": null,
+    "password": null
   }
 }

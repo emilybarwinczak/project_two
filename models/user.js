@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: {
-          args: [2, 25],
+          args: [1, 25],
           msg: 'Name must be 2-25 characters long.'
         }
       }
@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: {
-          args:[8,99],
+          args:[1,99],
           msg: 'Password must be between 8 and 99 characters.'
         }
       }

@@ -1,13 +1,9 @@
-let express = require('express')
-let db = require('../models')
+let express = require("express")
+const db = require("../models")
+// const router = require("./auth")
 const router = express.Router()
-const post = require('../models/post')
-const sequelize = require('sequelize')
-const { Op } = require('sequelize')
-const methodOverride = require('method-override')
-const cloudinary = require('cloudinary')
-const multer = require('multer')
-const upload = multer({ dest: './uploads/' })
+const post = require("../models/post")
+const sequelize = require("sequelize")
 
 
 // SEARCH
@@ -31,10 +27,8 @@ router.get("/new", (req, res) => {
     .then((post) => {
       res.render("posts/new", { post: post })
     })
-    .catch((error) => {
-      res.status(200).send("new posts")
-    })
 })
+
 
 // Post to Profile
 router.post("/new", (req, res) => {
