@@ -1,9 +1,11 @@
+require("dotenv").config()
 let express = require("express")
 const db = require("../models")
-// const router = require("./auth")
 const router = express.Router()
 const post = require("../models/post")
 const sequelize = require("sequelize")
+const methodOverride = require('method-override')
+const isLoggedIn = require("../middleware/isLoggedIn")
 
 
 // SEARCH
@@ -22,32 +24,32 @@ router.get('/search', (req, res) => {
 })
 
 // Form to Create Post
-router.get("/new", (req, res) => {
-  db.post.findAll()
-    .then((post) => {
-      res.render("posts/new", { post: post })
+router.get("/new", isLoggedIn, (req, res) => {
+      res.render("posts/new")
     })
-})
 
 
 // Post to Profile
-router.post("/new", (req, res) => {
+router.post("/posts", isLoggedIn, (req, res) => {
   db.post.create({
     city: req.body.city,
     country: req.body.country,
     content: req.body.content,
-    title: req.body.title
+    photo: req.body.photo
   })
-    .then((post) => {
-      res.render("posts/image", { post: post })
+    // .then((post) => {
+    //   res.render("posts/new", { post: post })
+    .then(createdPost => {
+      res.redirect("/posts")
     })
+    // })
     .catch((error) => {
       console.log(error)
     })
 })
 
 // Profile -- ALL POSTS
-router.get("/", (req, res) => {
+router.get("/allPosts", (req, res) => {
   db.post.findAll()
     .then((posts) => {
       res.render("posts/index", { posts })

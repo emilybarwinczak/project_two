@@ -16,10 +16,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   post.init({
+    // id: DataTypes.INTEGER,
     city: DataTypes.STRING,
     country: DataTypes.STRING,
     content: DataTypes.STRING,
     photo: DataTypes.STRING
+    // createdAt: DataTypes.DATE,
+    // updatedAt: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'post',

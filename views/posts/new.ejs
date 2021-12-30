@@ -4,13 +4,13 @@ add image, URL link box -->
 
 
 
-<section id='add' class='container'>
+<!-- <section id='add' class='container'>
     <div class='form-wrap'>
         <div class="container">
             <h2>Create Post</h2>
         </div>
-    </div>
-    <form action="/post/new" method="POST">
+    </div> -->
+    <form action="/posts" method="POST">
         <div class="container">
             <label for="city">City</label>
             <input type="text" name="city" id="city" class="form-box" values={{city}} required>
@@ -30,9 +30,8 @@ add image, URL link box -->
             <label for="photo">Image URL:</label>
             <input type="text" name="photo" id="photo" class="form-box" values={{photo}} required>
         </div>
-<<<<<<< HEAD
+        <div id="submitButton">
+            <input type="submit" value="Submit Post" id="submit"></input>
+        </div>
     </form>
 </section>
-=======
-    </form>
->>>>>>> parent of e978111 (post route not working but almost working)

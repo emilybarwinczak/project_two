@@ -7,6 +7,7 @@ const passport = require('./config/ppConfig')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
 const db = require('./models')
+const methodOverride = require('method-override')
 
 
 // views (ejs and layouts) set up
@@ -27,6 +28,7 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use(methodOverride('_method'))
 // flash middleware (must go AFTER session middleware)
 app.use(flash())
 
@@ -40,7 +42,8 @@ app.use((req, res, next) => {
 
 // controllers middleware 
 app.use('/auth', require('./controllers/auth'))
-
+app.use('/post', require('./controllers/post'))
+// app.use('/allPosts', require('./controllers/allPosts'))
 
 // home route
 app.get('/', (req, res)=>{
@@ -52,6 +55,15 @@ app.get('/profile', isLoggedIn, (req, res)=>{
     res.render('profile')
 })
 
+app.post('/post/new', (req, res) => {
+    let posts = fs.readFileSync('./posts.json')
+    let postsData = JSON.parse(posts)
+    // console.log(req.body)
+    // res.render('posts')
+    postsData.push(req.body)
+    fs.writeFileSync('./posts.json', JSON.stringify(postsData))
+    res.redirect('/posts')
+})
 
 app.listen(3000, ()=>{
     console.log(`process.env.SUPER_SECRET_SECRET ${process.env.SUPER_SECRET_SECRET}`)
